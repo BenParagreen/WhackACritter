@@ -26,6 +26,8 @@ public:
 	//Clears Pending Score
 	void ClearPendingScore();
 
+	void Setup(std::string _textureFile, int _pointvalue);
+
 
 	//END BEHAVIOUR//------------------------
 	/////////////////////////////////////////
@@ -38,6 +40,7 @@ private:
 	sf::Sound m_deathsound;
 	sf::SoundBuffer m_deathbuffer;
 	int m_pendingScore;
+	int m_scoreValue;
 
 	//END DATA//-----------------------------
 

@@ -7,7 +7,7 @@
 
 Critter::Critter()
 // initialisation list
-	:m_sprite(), m_texture(), m_alive(true), m_deathsound(), m_deathbuffer(), m_pendingScore(0)
+	:m_sprite(), m_texture(), m_alive(true), m_deathsound(), m_deathbuffer(), m_pendingScore(0), m_scoreValue(1)
 {
 
 	// set up sprite
@@ -40,7 +40,7 @@ void Critter::Input(sf::Event _gameEvent)
 				// We die 
 				m_alive = false;
 				m_deathsound.play();
-				m_pendingScore += 1;
+				m_pendingScore += m_scoreValue;
 			}
 		}// end event if state
 	}
@@ -54,4 +54,15 @@ int Critter::GetPendingScore()
 void Critter::ClearPendingScore()
 {
 	m_pendingScore = 0;
+}
+
+void Critter::Setup(std::string _textureFile, int _pointValue)
+{
+	// set up sprite
+	m_texture.loadFromFile(_textureFile);
+	m_sprite.setTexture(m_texture);
+	m_sprite.setPosition(rand() % sf::VideoMode::getDesktopMode().width,
+		rand() % sf::VideoMode::getDesktopMode().height);
+
+	m_scoreValue = _pointValue;
 }

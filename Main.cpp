@@ -25,6 +25,10 @@ int main()
 
 	//Create an Instance of Critter Class
 	Critter walrus;
+	walrus.Setup("graphics/walrus.png", 10);
+	Critter whale;
+	whale.Setup("graphics/whale.png", 5);
+
 
 	//Game Font
 	sf::Font gameFont;
@@ -50,6 +54,7 @@ int main()
 		{
 			//Process input on Critter
 			walrus.Input(event);
+			whale.Input(event);
 
 			if (event.type == sf::Event::Closed) 
 			{
@@ -66,7 +71,8 @@ int main()
 
 		score += walrus.GetPendingScore();
 	    scoreText.setString("Score: " + std::to_string(score));
-
+		walrus.ClearPendingScore();
+		whale.ClearPendingScore();
 
 		//END UPDATE//-----------------------
 		/////////////////////////////////////
@@ -77,6 +83,7 @@ int main()
 
 		// draw everything
 		walrus.Draw(window);
+		whale.Draw(window);
 		window.draw(scoreText);
 
 		// displays window
