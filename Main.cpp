@@ -70,6 +70,7 @@ int main()
 		sf::Time frameTime = gameClock.restart();
 
 		score += walrus.GetPendingScore();
+		score += whale.GetPendingScore();
 	    scoreText.setString("Score: " + std::to_string(score));
 		walrus.ClearPendingScore();
 		whale.ClearPendingScore();

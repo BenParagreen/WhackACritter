@@ -10,12 +10,6 @@ Critter::Critter()
 	:m_sprite(), m_texture(), m_alive(true), m_deathsound(), m_deathbuffer(), m_pendingScore(0), m_scoreValue(1)
 {
 
-	// set up sprite
-	m_texture.loadFromFile("graphics/walrus.png");
-	m_sprite.setTexture(m_texture);
-	m_sprite.setPosition(rand() % sf::VideoMode::getDesktopMode().width,
-		                 rand() % sf::VideoMode::getDesktopMode().height);
-
 	// Set up death sound
 	m_deathbuffer.loadFromFile("audio/buttonclick.ogg");
 	m_deathsound.setBuffer(m_deathbuffer);
@@ -35,7 +29,7 @@ void Critter::Input(sf::Event _gameEvent)
 		if (_gameEvent.type == sf::Event::MouseButtonPressed)
 		{
 			// Did they click on this critter?
-			if (m_sprite.getGlobalBounds().contains(_gameEvent.mouseButton.x, _gameEvent.mouseButton.y));
+			if (m_sprite.getGlobalBounds().contains(_gameEvent.mouseButton.x, _gameEvent.mouseButton.y))
 			{
 				// We die 
 				m_alive = false;
